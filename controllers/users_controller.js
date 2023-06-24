@@ -1,3 +1,5 @@
+const User = require("../models/user");
+
 module.exports.profile = function (req, res) {
   return res.render("user_profile", {
     title: "User Profile",
@@ -20,7 +22,24 @@ module.exports.signIn = function (req, res) {
 
 //get the Sign up data
 module.exports.create = function (req, res) {
-  // TODO later
+  if (req.body.password != req.body.confirm_password) {
+    return res.redirect("back");
+  }
+
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        User.create(req.body);
+        console.log("...", req.body);
+        return res.redirect("/users/sign-in");
+      } else {
+        console.log("User already there");
+        return res.redirect("back");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 //Sign In & create a session for the User
