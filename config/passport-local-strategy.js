@@ -11,7 +11,7 @@ passport.use(
       usernameField: "email",
     },
     function (email, password, done) {
-      //finda a user and establish the identity
+      //find a user and establish the identity
       User.findOne({ email: email })
         .then((user) => {
           if (!user || user.password != password) {
