@@ -8,6 +8,9 @@ module.exports.profile = function (req, res) {
 
 //Render the Sign Up page
 module.exports.signUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_sign_up", {
     title: "Codeial | Sign Up",
   });
@@ -15,6 +18,10 @@ module.exports.signUp = function (req, res) {
 
 //Render the Sign In page
 module.exports.signIn = function (req, res) {
+  //if the user is already signed in, than user should not be able to see the sign in page
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_sign_in", {
     title: "Codeial | Sign In",
   });
