@@ -6,6 +6,7 @@ const passport = require("passport");
 const usersController = require("../controllers/users_controller");
 const postsController = require("../controllers/posts_controller");
 
+// profile page is accessible only when the user is signed in using checkAuthentication
 router.get("/profile", passport.checkAuthentication, usersController.profile);
 
 router.get("/posts", postsController.posts);

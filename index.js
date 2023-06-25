@@ -14,6 +14,7 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 
+// Mongo Store
 const MongoStore = require("connect-mongo");
 
 app.use(express.urlencoded());
@@ -57,6 +58,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// whenever passport is initialized, setAuthenticatedUser is also being set
 app.use(passport.setAuthenticatedUser);
 
 //use express router
