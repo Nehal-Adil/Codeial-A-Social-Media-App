@@ -1,0 +1,42 @@
+#layout-header {
+  nav {
+    width: 100%;
+    display: flex;
+    // position: fixed;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: #2196f3;
+    color: white;
+    box-shadow: 1px 10px 5px 1px rgb(213, 213, 213);
+
+    .mini-logo {
+      p {
+        margin: 5px;
+        font-size: 2rem;
+        font-weight: bold;
+
+        a {
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .auth-links {
+      ul {
+        margin: 1rem;
+        display: flex;
+        list-style: none;
+
+        li {
+          margin: 0 10px;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
